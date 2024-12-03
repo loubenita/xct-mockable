@@ -23,6 +23,7 @@ final class XCTPropertiesTests: XCTBaseTests {
         // Assert
         XCTAssertEqual("Some cool value", result)
         verify(propertiesMock.productDescription).wasCalled()
+        verify(propertiesMock.productDescription).returned("Some cool value")
     }
     
     func test_product_assignment() throws {
@@ -35,6 +36,7 @@ final class XCTPropertiesTests: XCTBaseTests {
         // Assert
         XCTAssertEqual(product, result)
         verify(propertiesMock.product).wasCalled()
+        verify(propertiesMock.product).returned(product)
     }
     
     func test_self_get_successful() throws {
@@ -47,6 +49,7 @@ final class XCTPropertiesTests: XCTBaseTests {
         // Assert
         XCTAssertEqual(propertiesMock, result)
         verify(propertiesMock.shared).wasCalled()
+        verify(propertiesMock.shared).returned(propertiesMock)
     }
     
     func test_static_self_get_successful() throws {
@@ -59,6 +62,7 @@ final class XCTPropertiesTests: XCTBaseTests {
         // Assert
         XCTAssertEqual(propertiesMock, result)
         verify(PropertiesProtocolMock.instance).wasCalled()
+        verify(PropertiesProtocolMock.instance).returned(propertiesMock)
     }
     
     func test_static_self_get_unsuccessful() throws {
@@ -85,6 +89,7 @@ final class XCTPropertiesTests: XCTBaseTests {
         // Assert
         XCTAssertNotEqual(propertiesMock, result)
         verify(propertiesMock.shared).wasCalled()
+        verify(propertiesMock.shared).returned(compareTo)
     }
     
     func test_nil_assignment() throws {
@@ -97,6 +102,7 @@ final class XCTPropertiesTests: XCTBaseTests {
         // Assert
         XCTAssertNil(result)
         verify(propertiesMock.productTitle).wasCalled()
+        verify(propertiesMock.productTitle).returned(nil)
     }
   
     ///

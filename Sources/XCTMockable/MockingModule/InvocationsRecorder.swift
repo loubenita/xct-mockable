@@ -19,7 +19,7 @@ public class InvocationsRecorder: NSObject {
             userInfo: nil)
     }
     
-    private(set) var result: InvocationRecord? {
+    private(set) var result: InvocationRecord! {
         didSet {
             XCTThrowException(Constants.exception)
         }
@@ -38,16 +38,8 @@ public class InvocationsRecorder: NSObject {
         return self
     }
     
-    public func recordInvocation(context: ContextContainer,
-                                 invocation: Invocation) {
-        guard let result = result else {
-            self.result = InvocationRecord(context: context, invocation: invocation)
-            return
-        }
-        
-        if result.invocation != invocation {
-            self.result = InvocationRecord(context: context, invocation: invocation)
-        }
+    public func recordInvocation(context: ContextContainer, invocation: Invocation) {
+        self.result = InvocationRecord(context: context, invocation: invocation)
     }
     
    public static var sharedRecorder: InvocationsRecorder? {

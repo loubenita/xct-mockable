@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TestFailure: Error, LocalizedError {
+public enum TestFailure: Error, LocalizedError {
     case incorrectInvocationCount(expected: Int, received: Int)
     case foundNoResult(key: String)
     case wrongReturnType(foundType: Any.Type, providedType: Any.Type)

@@ -7,11 +7,7 @@
 
 import Foundation
 
-public struct InvocationRecord: Equatable {
+public struct InvocationRecord {
     let context: ContextContainer
     let invocation: Invocation
-    
-    public static func == (lhs: InvocationRecord, rhs: InvocationRecord) -> Bool {
-        return lhs.invocation == rhs.invocation
-    }
 }

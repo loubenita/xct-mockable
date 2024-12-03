@@ -9,7 +9,6 @@ import Foundation
 
 // MARK: Verification Calls
 
-
 public func verify<DeclarationType: Declaration, InvocationType, ReturnType>(
     _ declaration: Mockable<DeclarationType, InvocationType, ReturnType>,
     file: StaticString = #file,
@@ -29,11 +28,7 @@ public func verify<ReturnType>(
         _ = try? declaration()
     }
     
-    guard let record = invocations.result else {
-        preconditionFailure("Failed to verify the records.")
-    }
-    
-    return VerificationManager(context: record.context,
-                               invocation: record.invocation,
+    return VerificationManager(context: invocations.result.context,
+                               invocation: invocations.result.invocation,
                                sourceLocation: SourceLocation(file, line))
 }
