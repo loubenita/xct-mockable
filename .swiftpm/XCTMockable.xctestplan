@@ -1,0 +1,39 @@
+{
+  "configurations" : [
+    {
+      "id" : "C6056E4E-9BF3-4012-94E8-8631F01791ED",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:",
+          "identifier" : "XCTMockable",
+          "name" : "XCTMockable"
+        }
+      ]
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "XCTMacroTests",
+        "name" : "XCTMacroTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "XCTUnitTests",
+        "name" : "XCTUnitTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -5,37 +5,9 @@
 //  Created by Lenard Pop on 19/02/2024.
 //
 
-import Foundation
 import XCTest
+import Foundation
 
-// MARK: Verification Calls
-
-
-public func verify<DeclarationType: Declaration, InvocationType, ReturnType>(_ declaration: Mockable<DeclarationType, InvocationType, ReturnType>,
-                                                                             file: StaticString = #file,
-                                                                             line: UInt = #line) -> VerificationManager<DeclarationType, ReturnType> {
-    return VerificationManager(context: declaration.context,
-                               invocation: declaration.invocation,
-                               sourceLocation: SourceLocation(file, line))
-}
-
-public func verify<ReturnType>(_ declaration: @autoclosure () throws -> ReturnType,
-                               file: StaticString = #file,
-                               line: UInt = #line) -> VerificationManager<Any?, ReturnType> {
-    let invocations = InvocationsRecorder().startRecording {
-        _ = try? declaration()
-    }
-    
-    guard let record = invocations.result else {
-        preconditionFailure("Failed to verify the records.")
-    }
-    
-    return VerificationManager(context: record.context,
-                               invocation: record.invocation,
-                               sourceLocation: SourceLocation(file, line))
-}
-
-// MARK: Protocol Definition
 protocol VerificationManagerProtocol {
     associatedtype ReturnType
     
@@ -43,8 +15,6 @@ protocol VerificationManagerProtocol {
     func wasCalled(_ times: Int) -> Self
     func wasNeverCalled() -> Self
 }
-
-// MARK: Verification Implementation
 
 public class VerificationManager<DeclarationType, ReturnType: Equatable> : VerificationManagerProtocol {
     typealias ReturnType = ReturnType
@@ -111,7 +81,10 @@ public class VerificationManager<DeclarationType, ReturnType: Equatable> : Verif
         }
         
         guard let result = result.value as? ReturnType else {
-            throw TestFailure.wrongReturnType(foundType: type(of: result), providedType: ReturnType.self)
+            throw TestFailure.wrongReturnType(
+                foundType: type(of: result),
+                providedType: ReturnType.self
+            )
         }
         
         guard result == value else {

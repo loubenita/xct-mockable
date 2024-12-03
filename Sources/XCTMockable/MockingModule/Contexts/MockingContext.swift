@@ -10,8 +10,10 @@ public class MockingContext: MockingContextProtocol {
     
     public init() { }
     
-    public func didInvoke<ReturnType>(_ invocation: Invocation, 
-                                      completion: @escaping (Invocation) -> ReturnType) -> ReturnType {
+    public func didInvoke<ReturnType>(
+        _ invocation: Invocation,
+        completion: @escaping (Invocation) -> ReturnType
+    ) -> ReturnType {
         self.invoke(invocation)
         return completion(invocation)
     }

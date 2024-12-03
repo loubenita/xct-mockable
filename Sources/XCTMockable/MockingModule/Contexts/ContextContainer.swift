@@ -11,8 +11,10 @@ public class ContextContainer {
     public let mocking: MockingContext
     public let stubbing: StubbingContext
     
-    public init(mocking: MockingContext = MockingContext(),
-                stubbing: StubbingContext = StubbingContext()) {
+    public init(
+        mocking: MockingContext = MockingContext(),
+        stubbing: StubbingContext = StubbingContext()
+    ) {
         self.mocking = mocking
         self.stubbing = stubbing
     }
