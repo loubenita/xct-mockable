@@ -32,7 +32,7 @@ final class XCTMacroAsyncTests: XCTMacroBaseTests {
 
                 func fetchData() async -> XCTMockable.Mockable<XCTMockable.FunctionDeclaration, () async -> Void, Void> {
                 return XCTMockable.Mockable<XCTMockable.FunctionDeclaration, () async -> Void, Void>(context: context,
-                                                                                                                         invocation: XCTMockable.Invocation(key: "func fetchData() async -> Void",
+                                                                                                     invocation: XCTMockable.Invocation(key: "func fetchData() async -> Void",
                                                                                                                                                              members: []),
                                                                                                                          returnType: Swift.ObjectIdentifier((Void).self))
                 }
