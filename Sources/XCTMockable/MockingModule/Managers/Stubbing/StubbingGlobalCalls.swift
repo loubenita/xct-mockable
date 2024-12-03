@@ -7,11 +7,11 @@
 
 import Foundation
 
-public func givenSwift<DeclarationType: Declaration,InvocationType, ReturnType>(
-    _ mockable: Mockable<DeclarationType, InvocationType, ReturnType>
-) -> StubbingManager<DeclarationType, InvocationType, ReturnType> {
-    return given(mockable)
-}
+//public func givenSwift<DeclarationType: Declaration,InvocationType, ReturnType>(
+//    _ mockable: Mockable<DeclarationType, InvocationType, ReturnType>
+//) -> StubbingManager<DeclarationType, InvocationType, ReturnType> {
+//    return given(mockable)
+//}
 
 public func given<DeclarationType: Declaration,InvocationType,ReturnType>(
     _ mockable: Mockable<DeclarationType, InvocationType, ReturnType>
@@ -32,12 +32,8 @@ public func given<ReturnType>(
         _ = try? declaration()
     }
     
-    guard let record = invocations.result else {
-        preconditionFailure("Failed to get the records.")
-    }
-    
     return StubbingManager(
-        context: record.context,
-        invocation: record.invocation
+        context: invocations.result.context,
+        invocation: invocations.result.invocation
     )
 }

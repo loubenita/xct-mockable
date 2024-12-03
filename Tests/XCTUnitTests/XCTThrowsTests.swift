@@ -29,6 +29,7 @@ final class XCTThrowsTests: XCTBaseTests {
         // Assert
         XCTAssertEqual("Fetching Data", result)
         verify(try throwsMock.fetchData()).wasCalled()
+        verify(try throwsMock.fetchProduct(id: 2)).wasNeverCalled()
     }
     
     func test_fetchProduct_productReturn() throws {
@@ -41,6 +42,7 @@ final class XCTThrowsTests: XCTBaseTests {
         // Assert
         XCTAssertEqual(product, result)
         verify(try throwsMock.fetchProduct(id: 2)).wasCalled()
+        verify(try throwsMock.fetchProducts(ids: [2])).wasNeverCalled()
     }
     
     func test_fetchProduct_productsReturn() throws {
