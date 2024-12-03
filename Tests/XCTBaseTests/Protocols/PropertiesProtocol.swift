@@ -19,9 +19,3 @@ protocol PropertiesProtocol: Equatable {
     var productDescription: String { get }
     var isAvailable: Bool { get set }
 }
-
-
-@Mockable
-protocol PropertiesProtocol2: Equatable {
-    static var description: Int { get }
-}

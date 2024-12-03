@@ -43,9 +43,7 @@ final class XCTMacroFactory {
             public var \(mockClassId) = UUID()
         
             public static var context = XCTMockable.ContextContainer()
-            public var context = XCTMockable.ContextContainer()
-            
-            \(getMemberImplementations())\(getInheritanceImplementations())
+            public var context = XCTMockable.ContextContainer()\n\(getMemberImplementations())\(getInheritanceImplementations())
         }
         """
         

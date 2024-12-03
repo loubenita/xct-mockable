@@ -26,16 +26,17 @@ final class XCTMacroSubscriptTests: XCTMacroBaseTests {
 
             class SubscriptProtocolMock: SubscriptProtocol, XCTMockProtocol {
                 public var mockClassId = UUID()
-            
+
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-
                 subscript(index: Int) -> String {
                     get {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "subscript(index: Int): String",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "subscript(index: Int): String",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
-            
+
                             let result = self.context.stubbing.implementation(for: invocation)
 
                             if let result = result {
@@ -75,16 +76,17 @@ final class XCTMacroSubscriptTests: XCTMacroBaseTests {
 
             class SubscriptProtocolMock: SubscriptProtocol, XCTMockProtocol {
                 public var mockClassId = UUID()
-            
+
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-
                 subscript(key: String) -> Int {
                     get {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "subscript(key: String): Int",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "subscript(key: String): Int",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
-            
+
                             let result = self.context.stubbing.implementation(for: invocation)
 
                             if let result = result {
@@ -122,16 +124,17 @@ final class XCTMacroSubscriptTests: XCTMacroBaseTests {
 
             class SubscriptProtocolMock: SubscriptProtocol, XCTMockProtocol {
                 public var mockClassId = UUID()
-            
+
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-            
                 subscript(product: Product) -> Product? {
                     get {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "subscript(product: Product): Product?",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "subscript(product: Product): Product?",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
-            
+
                             let result = self.context.stubbing.implementation(for: invocation)
 
                             if let result = result {
@@ -171,14 +174,15 @@ final class XCTMacroSubscriptTests: XCTMacroBaseTests {
 
             class PropertiesProtocolMock: PropertiesProtocol, XCTMockProtocol {
                 public var mockClassId = UUID()
-            
+
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-            
                 subscript(id: String, product: Product) -> Product? {
                     get async throws {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "subscript(id: String, product: Product): Product?",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "subscript(id: String, product: Product): Product?",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
 
                             let result = self.context.stubbing.implementation(for: invocation)
