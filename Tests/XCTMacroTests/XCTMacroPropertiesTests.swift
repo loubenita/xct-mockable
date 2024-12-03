@@ -26,16 +26,17 @@ final class XCTMacroPropertiesTests: XCTMacroBaseTests {
 
             class PropertiesProtocolMock: PropertiesProtocol, XCTMockProtocol {
                 public var mockClassId = UUID()
-            
+
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-            
                 static var description: String {
                     get {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "static var description: String",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "static var description: String",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
-            
+
                             let result = self.context.stubbing.implementation(for: invocation)
 
                             if let result = result {
@@ -73,16 +74,17 @@ final class XCTMacroPropertiesTests: XCTMacroBaseTests {
 
             class PropertiesProtocolMock: PropertiesProtocol, XCTMockProtocol {
                 public var mockClassId = UUID()
-            
+
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-            
                 var product: Product {
                     get {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "var product: Product",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "var product: Product",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
-            
+
                             let result = self.context.stubbing.implementation(for: invocation)
 
                             if let result = result {
@@ -122,16 +124,17 @@ final class XCTMacroPropertiesTests: XCTMacroBaseTests {
 
             class PropertiesProtocolMock: PropertiesProtocol, XCTMockProtocol {
                 public var mockClassId = UUID()
-            
+
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-            
                 var productTitle: String? {
                     get {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "var productTitle: String?",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "var productTitle: String?",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
-            
+
                             let result = self.context.stubbing.implementation(for: invocation)
 
                             if let result = result {
@@ -173,16 +176,17 @@ final class XCTMacroPropertiesTests: XCTMacroBaseTests {
 
             class PropertiesProtocolMock: PropertiesProtocol, XCTMockProtocol {
                 public var mockClassId = UUID()
-            
+
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-            
                 var productDescription: String {
                     get {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "var productDescription: String",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "var productDescription: String",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
-            
+
                             let result = self.context.stubbing.implementation(for: invocation)
 
                             if let result = result {
@@ -220,16 +224,17 @@ final class XCTMacroPropertiesTests: XCTMacroBaseTests {
 
             class PropertiesProtocolMock: PropertiesProtocol, XCTMockProtocol {
                 public var mockClassId = UUID()
-            
+
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-            
                 var isAvailable: Bool {
                     get async {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "var isAvailable: Bool",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "var isAvailable: Bool",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
-            
+
                             let result = self.context.stubbing.implementation(for: invocation)
 
                             if let result = result {
@@ -267,14 +272,15 @@ final class XCTMacroPropertiesTests: XCTMacroBaseTests {
 
             class PropertiesProtocolMock: PropertiesProtocol, XCTMockProtocol {
                 public var mockClassId = UUID()
-            
+
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-            
                 var isAvailable: Bool {
                     get async throws {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "var isAvailable: Bool",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "var isAvailable: Bool",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
 
                             let result = self.context.stubbing.implementation(for: invocation)
@@ -311,17 +317,18 @@ final class XCTMacroPropertiesTests: XCTMacroBaseTests {
             protocol PropertiesProtocol: Equatable {
                 var shared: Self { get }
             }
-            
+
             class PropertiesProtocolMock: PropertiesProtocol, XCTMockProtocol, Equatable {
                 public var mockClassId = UUID()
-            
+
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-
                 var shared: Self {
                     get {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "var shared: Self",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "var shared: Self",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
 
                             let result = self.context.stubbing.implementation(for: invocation)
@@ -365,14 +372,15 @@ final class XCTMacroPropertiesTests: XCTMacroBaseTests {
 
             class PropertiesProtocolMock: PropertiesProtocol, XCTMockProtocol, Equatable {
                 public var mockClassId = UUID()
-            
+
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-
                 static var shared: Self {
                     get {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "static var shared: Self",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "static var shared: Self",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
 
                             let result = self.context.stubbing.implementation(for: invocation)

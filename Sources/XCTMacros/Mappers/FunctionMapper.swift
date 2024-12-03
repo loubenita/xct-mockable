@@ -71,10 +71,13 @@ internal final class FunctionMapper {
         return """
         \(attributes)
         \(modifiers)\(funcKeyword) \(functionName)(\(parametersList))\(effectSpecifiers) -> \(createInvocationReturn(invocationType: invocationType, type: returnType)) {
-            return XCTMockable.Mockable<XCTMockable.FunctionDeclaration, \(invocationType), \(returnType)>(context: context,
-                                                                                                                     invocation: XCTMockable.Invocation(key: "\(modifiers)func \(functionName)(\(parametersList))\(effectSpecifiers) -> \(returnType)",
-                                                                                                                                                         members: \(invocationMembers)),
-                                                                                                                     returnType: Swift.ObjectIdentifier((\(returnType)).self))
+            return XCTMockable.Mockable<XCTMockable.FunctionDeclaration, \(invocationType), \(returnType)>(
+                context: context,
+                invocation: XCTMockable.Invocation(
+                    key: "\(modifiers)func \(functionName)(\(parametersList))\(effectSpecifiers) -> \(returnType)",
+                    members: \(invocationMembers)
+                ),
+                returnType: Swift.ObjectIdentifier((\(returnType)).self))
         }
         """
     }
@@ -88,13 +91,15 @@ internal final class FunctionMapper {
         
         return """
             \(modifiers)\(funcKeyword) \(functionName)(\(parametersList))\(effectSpecifiers) -> \(returnType) {
-                return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "\(modifiers)func \(functionName)(\(parametersList))\(effectSpecifiers) -> \(returnType)",
-                                                                                  members: \(invocationMembers))) { invocation in
+                return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                    key: "\(modifiers)func \(functionName)(\(parametersList))\(effectSpecifiers) -> \(returnType)",
+                    members: \(invocationMembers))
+                ) { invocation in
                     
                     let result = self.context.stubbing.implementation(for: invocation)
-        
+                    
                     \(getResultBlock(returnType: returnType, optional: member.isReturningOptional))
-
+                    
                     fatalError("Failed to find a suitable result type.", file: #file, line: #line)
                 }
             }
@@ -103,11 +108,11 @@ internal final class FunctionMapper {
     
     private func getResultBlock(returnType: String, optional: Bool) -> String {
         return """
-            if let result = result {
-                if let result = result as? \(returnType.replacingOccurrences(of: "?", with: "")) {
-                    return result
-                }\(getOptionalReturnBlock(optional))
-            }
+        if let result = result {
+                        if let result = result as? \(returnType.replacingOccurrences(of: "?", with: "")) {
+                            return result
+                        }\(getOptionalReturnBlock(optional))
+                    }
         """
     }
     

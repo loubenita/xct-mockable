@@ -29,7 +29,6 @@ final class XCTMacroInitTests: XCTMacroBaseTests {
             
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-
                 required init() {
                 }
             }
@@ -60,7 +59,6 @@ final class XCTMacroInitTests: XCTMacroBaseTests {
             
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-
                 required init(key keyValue: String, jsonValue: String) {
                 }
             }

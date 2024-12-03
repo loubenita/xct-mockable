@@ -84,12 +84,14 @@ internal final class GetterMapper {
     ) -> String {        
         return """
         \(declaration) {
-            return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "\(definition)",
-                                                                         members: [])) { invocation in
+            return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                key: "\(definition)",
+                members: [])
+            ) { invocation in
                 self.context.recordInvocation(invocation)
-        
+                
                 let result = self.context.stubbing.implementation(for: invocation)
-
+                
                 \(getResultBlock(returnType: type, optional: optional))
                 
                 fatalError("Failed to find a suitable result type.", file: #file, line: #line)

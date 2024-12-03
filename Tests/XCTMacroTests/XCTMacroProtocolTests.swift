@@ -32,11 +32,12 @@ final class XCTMacroProtocolTests: XCTMacroBaseTests {
 
                 public static var context = XCTMockable.ContextContainer()
                 public var context = XCTMockable.ContextContainer()
-
                 var mainActorAttribute: Bool {
                     get {
-                        return self.context.mocking.didInvoke(XCTMockable.Invocation(key: "var mainActorAttribute: Bool",
-                                                                                     members: [])) { invocation in
+                        return self.context.mocking.didInvoke(XCTMockable.Invocation(
+                            key: "var mainActorAttribute: Bool",
+                            members: [])
+                        ) { invocation in
                             self.context.recordInvocation(invocation)
 
                             let result = self.context.stubbing.implementation(for: invocation)
